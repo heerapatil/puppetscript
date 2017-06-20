@@ -1,0 +1,34 @@
+#1.Write a script which will demonstrate File Creation and Deletion.
+
+file{"/etc/puppet/manifests/create.txt":
+ensure =>"present",
+owner =>"root",
+group =>"root"
+mode="755",
+content =>"creation of file",
+  }
+  '''output:
+[root@heera manifests]# puppet apply /etc/puppet/manifests/creation.pp 
+Notice: Compiled catalog for heera in environment production in 0.66 seconds
+Notice: /Stage[main]/Main/File[/etc/puppet/manifests/create.txt]/ensure: created
+Notice: Finished catalog run in 0.02 seconds
+[root@heera manifests]# ls
+create.txt  creation.pp  file1.txt  first.pp  git.pp  java.pp  site.pp
+'''
+
+
+
+
+file{"/etc/puppet/manifests/create.txt":
+ ensure =>"absent",
+  }
+'''output:
+[root@heera manifests]# puppet apply /etc/puppet/manifests/deletion.pp
+Notice: Compiled catalog for heera in environment production in 0.11 seconds
+Notice: /Stage[main]/Main/File[/etc/puppet/manifests/create.txt]/ensure: removed
+Notice: Finished catalog run in 0.04 seconds
+[root@heera manifests]# ls
+creation.pp  deletion.pp  file1.txt  first.pp  git.pp  java.pp  site.pp
+'''  
+  
+  
