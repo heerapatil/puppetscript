@@ -1,0 +1,24 @@
+#2. Write a script which will demonstrate User,Group Creation and Deletion.
+
+user {"heera": 
+ensure     => present, 
+uid        => '1000',  
+home       => '/home/heera'
+}
+
+'''output:
+[root@heera home]#cat /etc/passwd
+
+heera:x:339:1003::/home/heera:/bin/bash
+'''
+
+
+group {mygroup:
+ensure     => "present",
+gid        => "400",
+} 
+
+#user deletion
+user {"heera": 
+ensure     => present,
+}
