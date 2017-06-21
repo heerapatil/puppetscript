@@ -3,8 +3,8 @@
 file{"/etc/puppet/manifests/create.txt":
 ensure =>"present",
 owner =>"root",
-group =>"root"
-mode="755",
+group =>"root",
+mode=>"755",
 content =>"creation of file",
   }
   '''output:
