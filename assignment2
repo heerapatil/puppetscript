@@ -12,11 +12,23 @@ home       => '/home/heera'
 heera:x:339:1003::/home/heera:/bin/bash
 '''
 
-
 group {mygroup:
 ensure     => "present",
 gid        => "400",
 } 
+
+
+group {'mygroup':  
+ensure     => present,  
+gid        => 499
+} ->
+user { 'heera':  
+ensure     => present,  
+uid        => '499',  
+gid        => '499',  
+home       => '/home/heera'
+}
+cut -d: -f1 /etc/group
 
 #user deletion
 user {"heera": 
